@@ -8,10 +8,11 @@ import type { Page } from '@/payload-types'
 import { CMSLink } from '@/components/Link'
 import { Media } from '@/components/Media'
 import RichText from '@/components/RichText'
+import { type DefaultTypedEditorState } from '@payloadcms/richtext-lexical';
 
 
 type HighImpactHeroBlock = NonNullable<Page['hero']> & {
-  richText?: any
+  richText?: DefaultTypedEditorState
 }
 
 export const HighImpactHero: React.FC<HighImpactHeroBlock> = ({
@@ -23,7 +24,7 @@ export const HighImpactHero: React.FC<HighImpactHeroBlock> = ({
 
   useEffect(() => {
     setHeaderTheme('dark')
-  }, [])
+  }, [setHeaderTheme])
 
 
   return (

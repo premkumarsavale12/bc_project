@@ -1,13 +1,17 @@
 import React from "react";
 import RichText from "@/components/RichText";
-import { Media } from "@/components/Media";
+import { type DefaultTypedEditorState } from '@payloadcms/richtext-lexical';
 import { Button } from "@payloadcms/ui";
+import type { Media as MediaType } from "@/payload-types";
+import { Media } from "@/components/Media";
+
+
 
 
 interface RightProps {
     items: {
-        media: any;
-        richText: any;
+        media: MediaType;
+        richText: DefaultTypedEditorState;
         label: string;
         url: string;
     }[];
@@ -15,7 +19,7 @@ interface RightProps {
 
 export const Right: React.FC<RightProps> = ({ items = [] }) => {
 
-  
+
 
     return (
 
@@ -51,7 +55,7 @@ export const Right: React.FC<RightProps> = ({ items = [] }) => {
 
                             <div className="w-full md:w-1/2 flex flex-col gap-4">
                                 {item.richText && (
-                                    <RichText data={item.richText} enableGutter={false}  className="text-black"/>
+                                    <RichText data={item.richText} enableGutter={false} className="text-black" />
                                 )}
 
                                 {item.label && (

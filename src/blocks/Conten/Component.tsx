@@ -3,6 +3,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Autoplay, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import Image from "next/image";
 
 interface Card {
   title: string;
@@ -66,10 +67,12 @@ export const ConteComponent = ({ cards }: ContentComponentBlock) => {
                 <div className="flex items-center gap-3 mt-auto pt-4">
                   {card.logo?.url && (
                     <div className="relative w-12 h-12 rounded-full overflow-hidden bg-gray-100 flex-shrink-0">
-                      <img
+                      <Image
                         src={card.logo.url}
                         alt={card.logo.alt || "Author"}
                         className="w-full h-full object-cover"
+                         width={500}
+                          height={300}
                       />
                     </div>
                   )}

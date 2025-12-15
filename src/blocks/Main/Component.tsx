@@ -1,31 +1,29 @@
 import RichText from "@/components/RichText"
+import Image from "next/image"
 
+import type { Main } from "@/payload-types"
 
-interface MainBlockProps {
-    media: any,
-    richText: any,
+export const MainBlock: React.FC<Main> = ({ media, richText }) => {
 
-}
-
-
-export const MainBlock: React.FC<MainBlockProps> = ({ media, richText }) => {
+    const activeMedia = (media && typeof media === 'object') ? media : null;
 
     return (
 
         <>
 
 
-            {media && (
+            {activeMedia && activeMedia.url && (
 
 
 
                 <div className="mt-8 flex justify-center">
 
-                    <img
-                        src={media.url}
-                        alt={media.alt || "Main image"}
+                    <Image
+                        src={activeMedia.url}
+                        alt={activeMedia.alt || "Main image"}
                         className="w-full max-w-5xl rounded-xl shadow-xl object-contain "
-
+                        width={activeMedia.width || 1000}
+                        height={activeMedia.height || 1000}
                     />
 
                 </div>

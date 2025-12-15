@@ -6,6 +6,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Autoplay, Navigation } from 'swiper/modules';
 import RichText from "@/components/RichText";
+import { type DefaultTypedEditorState } from '@payloadcms/richtext-lexical';
 
 interface MediaItem {
     media: {
@@ -16,7 +17,7 @@ interface MediaItem {
 
 interface SliderBlock {
     sliders: MediaItem[];
-    richText: any;
+    richText: DefaultTypedEditorState;
 
 
 }
@@ -32,7 +33,7 @@ export const Slider: React.FC<SliderBlock> = ({ sliders, richText }) => {
             {richText && <RichText className="mb-0 text-red-700 text-center" data={richText} enableGutter={false} />}
 
 
-            <div className="relative w-[1200px] h-[400px] ml-[350px]">
+            <div className="relative w-[1200px] h-[400px] ml-[370px]">
 
 
                 <div className="custom-prev absolute left-5 top-1/2 -translate-y-1/2 
@@ -72,7 +73,7 @@ export const Slider: React.FC<SliderBlock> = ({ sliders, richText }) => {
                                 <div className="w-full h-[500px]   relative overflow-hidden">
                                     <Image
                                         width={600}
-                                        height={600}
+                                        height={400}
                                         src={file.url}
                                         alt={file.alt || "Slider image"}
                                         className="w-full h-full "

@@ -18,10 +18,6 @@ import { DownComponent } from '@/blocks/Down/Component'
 
 
 
-type BlockWithExtraProps = Page['layout'][0] & {
-  disableInnerContainer?: boolean;
-};
- 
 const blockComponents = {
   archive: ArchiveBlock,
   content: ContentBlock,
@@ -50,11 +46,12 @@ export const RenderBlocks: React.FC<{
         const { blockType } = block;
 
         if (blockType && blockType in blockComponents) {
-     const Block = blockComponents[blockType as keyof typeof blockComponents] as React.ComponentType<any>;
+          const Block = blockComponents[blockType as keyof typeof blockComponents] as React.ComponentType<Record<string, unknown>>;
 
           return (
             <div className="my-16" key={index}>
-                <Block {...(block as any)} disableInnerContainer={true} />
+              <Block {...(block as unknown as Record<string, unknown>)} disableInnerContainer={true} />
+
             </div>
           );
         }
@@ -64,3 +61,4 @@ export const RenderBlocks: React.FC<{
     </Fragment>
   );
 };
+

@@ -1,10 +1,11 @@
+import { type DefaultTypedEditorState } from '@payloadcms/richtext-lexical';
 import RichText from "@/components/RichText";
-
+import Image from "next/image";
 
 interface OemBlockProps {
-    richText: any;
+    richText?: DefaultTypedEditorState;
     logos: LogoItem[];
-    paragraph: any;
+    paragraph: string;
     disableInnerContainer?: boolean;
 
 }
@@ -14,9 +15,9 @@ interface LogoItem {
         url: string;
         alt: string;
     };
-    richText: any;
+    richText?: DefaultTypedEditorState;
     para?: string;
-    paragraph: any;
+    paragraph: string;
 }
 
 export const OemBlock: React.FC<OemBlockProps> = ({ richText, logos, paragraph }) => {
@@ -48,9 +49,11 @@ export const OemBlock: React.FC<OemBlockProps> = ({ richText, logos, paragraph }
 
                             {item.logo?.url && (
                                 <div className="h-20 flex items-center justify-center">
-                                    <img
+                                    <Image
                                         src={item.logo.url}
                                         alt={item.logo.alt || "logo"}
+                                         width={500}
+                                          height={500}
                                         className="h-full w-auto object-contain"
                                     />
                                 </div>

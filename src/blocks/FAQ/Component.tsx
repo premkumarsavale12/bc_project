@@ -1,14 +1,13 @@
 import RichText from "@/components/RichText";
+import { type DefaultTypedEditorState } from '@payloadcms/richtext-lexical';
 import React from "react";
 
 interface FAQBlockProps {
 
     items: {
-        Question: any,
-        richText: any;
-
-
-    }[],
+        Question: string;
+        richText: DefaultTypedEditorState;
+    }[];
 
 
 
@@ -23,12 +22,12 @@ export const FAQBlock: React.FC<FAQBlockProps> = ({ items = [] }) => {
 
         <>
             {
-                items.map((item: any, index:number) => {
+                items.map((item, index) => {
 
                     return (
-                        <div className="w-full flex justify-center">
+                        <div key={index} className="w-full flex justify-center" >
                             <div
-                                key={item.index}
+                          
                                 className="w-[70%] md:w-[60%] lg:w-[50%] 
                                 group p-6 bg-white border border-blue-200 rounded-xl 
                                 hadow-md hover:shadow-xl hover:border-blue-500 

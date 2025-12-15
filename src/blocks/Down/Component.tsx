@@ -1,7 +1,8 @@
 
-import { Media } from '@/collections/Media';
+
 import { Down } from '@/payload-types';
 import React from 'react';
+import Image from 'next/image';
 
 
 export const DownComponent: React.FC<Down & { disableInnerContainer?: boolean }> = ({ contact, officeHours, navigation, legalLinks, socialMedia }) => {
@@ -131,7 +132,7 @@ export const DownComponent: React.FC<Down & { disableInnerContainer?: boolean }>
                                         {
                                             socialMedia.map((data) => (
                                                 <li key={data.id}>
-                                                    <img
+                                                    <Image
                                                         src={
                                                             data.logo && typeof data.logo === 'object' && data.logo.url
                                                                 ? data.logo.url
