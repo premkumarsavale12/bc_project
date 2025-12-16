@@ -17,9 +17,10 @@ import { Slider } from '../../blocks/Slider/config'
 import { FAQ } from '../../blocks/FAQ/config'
 import { Logo } from '../../blocks/Logo/config'
 import { Conten }  from '../../blocks/Conten/config'
- import { Main } from '../../blocks/Main/config'
- import { Oem } from '../../blocks/Oem/config'
-  import { Down } from '../../blocks/Down/config'
+import { Main } from '../../blocks/Main/config'
+import { Oem } from '../../blocks/Oem/config'
+import { Down } from '../../blocks/Down/config'
+import { ContactsBlocks }  from '../../blocks/ContactsBlocks/config'
 
 import {
   MetaDescriptionField,
@@ -80,7 +81,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, Right, Slider, FAQ, Logo, Conten, Main, Oem , Down],
+              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, Right, Slider, FAQ, Logo, Conten, Main, Oem , Down, ContactsBlocks],
               required: true,
               admin: {
                 initCollapsed: true,

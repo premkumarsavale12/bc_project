@@ -9,7 +9,7 @@ import { CMSLink } from '@/components/Link'
 export const HeaderNav: React.FC<{ data: HeaderType }> = ({ data }) => {
 
   const defaultNavItems = [
-    { link: { label: 'Home', url: '/first' } },
+    { link: { label: 'Home', url: '/' } },
     { link: { label: 'About', url: '/about' } },
     { link: { label: 'Purchase', url: '/purchase' } },
     { link: { label: 'Contact', url: '/contact' } },

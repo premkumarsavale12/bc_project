@@ -15,6 +15,7 @@ import { ConteComponent } from '@/blocks/Conten/Component'
 import { MainBlock } from '@/blocks/Main/Component'
 import { OemBlock } from '@/blocks/Oem/Component'
 import { DownComponent } from '@/blocks/Down/Component'
+import { ContactsBlocks }  from '@/blocks/ContactsBlocks/Component'
 
 
 
@@ -31,7 +32,8 @@ const blockComponents = {
   conten: ConteComponent,
   main: MainBlock,
   oem: OemBlock,
-  down: DownComponent
+  down: DownComponent,
+   contactsblocks  :ContactsBlocks
 }
 
 export const RenderBlocks: React.FC<{

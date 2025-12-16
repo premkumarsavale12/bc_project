@@ -131,17 +131,19 @@ export const DownComponent: React.FC<Down & { disableInnerContainer?: boolean }>
 
                                         {
                                             socialMedia.map((data) => (
+                                                
                                                 <li key={data.id}>
-                                                    <Image
-                                                        src={
-                                                            data.logo && typeof data.logo === 'object' && data.logo.url
-                                                                ? data.logo.url
-                                                                : ''
-                                                        }
-                                                                 alt="social icon"
-                                                            className="w-5 h-5 object-contain hover:scale-110 transition"
 
-                                                    />
+                                                    {data.logo && typeof data.logo === 'object' && data.logo.url && (
+                                                        <Image
+                                                            src={data.logo.url}
+                                                            alt="social icon"
+                                                            width={500}
+                                                            height={500}
+                                                            className="w-5 h-5 object-contain hover:scale-110 transition"
+                                                        />
+                                                    )}
+                                               
                                                 </li>
                                             ))
                                         }

@@ -214,6 +214,7 @@ export interface Page {
     | Main
     | Oem
     | Down
+    | Contactsblocks
   )[];
   meta?: {
     title?: string | null;
@@ -1036,6 +1037,33 @@ export interface Down {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contactsblocks".
+ */
+export interface Contactsblocks {
+  heading: string;
+  description?: string | null;
+  phone?: string | null;
+  email?: string | null;
+  address?: string | null;
+  /**
+   * Paste Google Maps embed iframe code
+   */
+  mapEmbed?: string | null;
+  formFields?:
+    | {
+        label?: string | null;
+        type?: ('text' | 'email' | 'textarea' | 'tel') | null;
+        required?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  submitLabel?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contactsblocks';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1350,6 +1378,7 @@ export interface PagesSelect<T extends boolean = true> {
         main?: T | MainSelect<T>;
         oem?: T | OemSelect<T>;
         down?: T | DownSelect<T>;
+        contactsblocks?: T | ContactsblocksSelect<T>;
       };
   meta?:
     | T
@@ -1597,6 +1626,29 @@ export interface DownSelect<T extends boolean = true> {
         logo?: T;
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contactsblocks_select".
+ */
+export interface ContactsblocksSelect<T extends boolean = true> {
+  heading?: T;
+  description?: T;
+  phone?: T;
+  email?: T;
+  address?: T;
+  mapEmbed?: T;
+  formFields?:
+    | T
+    | {
+        label?: T;
+        type?: T;
+        required?: T;
+        id?: T;
+      };
+  submitLabel?: T;
   id?: T;
   blockName?: T;
 }

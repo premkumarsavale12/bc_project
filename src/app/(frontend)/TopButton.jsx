@@ -2,41 +2,83 @@
 
 "use client"
 import React, { useEffect, useState } from 'react'
+import { useLenis } from 'lenis/react';
 
 const TopButton = () => {
 
-    const [visiable, setVisiable] = useState(true);
+    const [visible, setvisible] = useState(true);
 
     const scrollThreshold = 400;
 
-    const toggleVisibility = () => {
+    const lenis = useLenis();
 
-        if (window.pageXOffset > scrollThreshold) {
-            setVisiable(true)
-        }
-        else {
+    // const toggleVisibility = () => {
 
-            setVisiable(false);
-        }
-    }
+    //     if (window.scrollY > scrollThreshold) {
+    //         setvisible(true)
+    //     }
+    //     else {
+
+    //         setvisible(false);
+    //     }  
 
 
+    // } 
     const scrollToTop = () => {
 
-        window.scroll({
-            top: 0,
-            behavior: 'smooth'
-        })
+
+
+        if (lenis) {
+            lenis.scrollTo(0, {
+
+                duration: 1.2,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                lock: false,
+
+            })
+        }
+
+        // window.scroll({
+        //     top: 0,
+        //     behavior: 'smooth'
+        // })
+
     }
+
 
     useEffect(() => {
 
+        if (!lenis) return;
 
-        window.addEventListener(" scroll", toggleVisibility)
-        return () => {
-            window.removeEventListener(" scroll", toggleVisibility)
+        const updateVisibility = ({ scroll }) => {
+
+            if (scroll > scrollThreshold) {
+
+                setvisible(true)
+            }
+
+            else {
+
+                setvisible(false)
+            }
+
         }
-    }, [])
+
+        lenis.on('scroll', updateVisibility);
+
+        return () => {
+            lenis.off('scroll', updateVisibility);
+        }
+
+
+        // window.addEventListener(" scroll", toggleVisibility)
+        // return () => {
+        //     window.removeEventListener(" scroll", toggleVisibility)
+        // }
+
+
+
+    }, [lenis, scrollThreshold])
 
 
     return (
@@ -44,12 +86,14 @@ const TopButton = () => {
 
             <div
                 className="scroll-to-top"
-                style={{ display: visiable ? 'block' : 'none', marginLeft:'40px' , marginTop:'-40px'}}
+                style={{ display: visible ? 'block' : 'none', marginLeft: '40px', marginTop: '-40px', }}
             >
                 <button
                     onClick={scrollToTop}
                     title="Go to top"
                     className="bg-black text-white 
+                    
+
                      -mt-[20px]
                   
                    w-14 h-14 
